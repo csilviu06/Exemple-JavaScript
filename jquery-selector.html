@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     </head>
     <body>
         <h3>
@@ -17,9 +16,10 @@
             Acesta este alt paragraf.
         </p>
         <script>
-            $(document).ready(function(){
-                 $("p").css("color", "red");
-            })
+            window.onload = function () {
+                const paragraphs = document.querySelectorAll('p');
+                paragraphs.forEach(paragraph => paragraph.style.color = 'red');
+            };
         </script>
     </body>
 </html>
