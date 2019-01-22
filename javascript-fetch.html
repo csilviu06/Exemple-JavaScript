@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Exemplu AJAX</title>
+        <meta charset="utf-8">
+        <style>
+            .text-center{text-align: center;}
+        </style>
+    </head>
+    <body>
+        <div class="text-center">
+            <img id="yesnoimg">
+        </div>
+        <div class="text-center">
+            <button id="yesnobtn">Yes/No</button>
+        </div>
+        <h1 class="text-center" id="yesnoresponse">
+            
+        </h1>
+        <script>
+            const button = document.getElementById('yesnobtn');
+            const img = document.getElementById('yesnoimg');
+            const response = document.getElementById('yesnoresponse');
+            
+            
+            button.onclick = function () {
+                response.style.display = 'none';
+                fetch('https://yesno.wtf/api')
+                    .then(res => {
+                        if (res.status !== 200) {
+                            return;
+                        }
+                        img.src = response.data.image;
+                        response.innerHTML = response.data.answer.toUpperCase();
+                        response.style.display = 'block';
+                    });
+            };
+        </script>
+    </body>
+</html>
